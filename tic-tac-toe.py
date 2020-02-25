@@ -60,12 +60,6 @@ def pixel_drawer(game_state: List[List], i: int, j: int, lines_names: str, draw_
     Solving what symbol to draw based on a position in a scheme.
     '''
 
-    #   1   2   3
-    # a   |   |
-    #  -----------
-    # b   |   |
-    #  -----------
-    # c   |   |
     if i == 0:  # Обработка первой строки
         if j % 4 == 2:  # пишем 1,2,3,4,5 в названиях столбцов
             return str(j // 4 + 1)  # нумерация идет с 0, поэтому прибавляем единицу
@@ -145,18 +139,18 @@ def check_win(cell: Tuple, game_state: List[List], player: int) -> bool:
     '''
     Checking if that's the last move and the game is over.
     '''
-    if abs(sum(game_state[cell[0]])) == 3 or \
-            abs(sum((row[cell[1]] for row in game_state))) == 3:  # Проверка сумм по строке или по столбцу
+    if abs(sum(game_state[cell[0]])) == len(game_state) or \
+            abs(sum((row[cell[1]] for row in game_state))) == len(game_state):  # Проверка сумм по строке или по столбцу
         return True
     if cell[0] == cell[1]:  # Проверка главной диагонали
-        return abs(sum(row[i] for i, row in enumerate(game_state))) == 3
+        return abs(sum(row[i] for i, row in enumerate(game_state))) == len(game_state)
     elif cell[0] + cell[1] == len(game_state) - 1:  # Проверка побочной диагонали
-        return abs(sum(row[len(game_state) - i - 1] for i, row in enumerate(game_state))) == 3
+        return abs(sum(row[len(game_state) - i - 1] for i, row in enumerate(game_state))) == len(game_state)
     else:  # все условия мимо, не победа
         return False
 
 
-def main() -> None:
+if __name__ == 'main':
     '''
     Launching funtions one by one
     '''
@@ -169,11 +163,11 @@ def main() -> None:
     current_player = 1
     counter = 0
 
+    print(draw_field(list_field, lines_names, draw_map))  # Drawing map
+
     while True:
         current_player = make_turn(dict_field, list_field, current_player, lines_names,
                                    draw_map, counter, players_dict)
         counter += 1
         if current_player == 0:
             break
-
-    return None
