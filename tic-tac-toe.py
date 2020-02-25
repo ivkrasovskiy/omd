@@ -168,6 +168,6 @@ if __name__ == '__main__':
     while True:
         current_player = make_turn(dict_field, list_field, current_player, lines_names,
                                    draw_map, counter, players_dict)
-        counter += 1
-        if current_player == 0:
+        counter += 1  # Счетчик ходов. Если достигает квардрата длины поля - ничья
+        if current_player == 0:  # Условие победы или ничьи
             break
