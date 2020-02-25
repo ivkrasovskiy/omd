@@ -156,10 +156,10 @@ if __name__ == '__main__':
     '''
     print('Welcome to the game TicTacToe!\nPlease, enter field size from 3 to 5\n')
     lines_names = 'abcde'  # Названия строк в схеме
-    draw_map = {0: ' ', 1: 'X', -1: 'O'}
-    players_dict = {1: 'First', -1: 'Second'}
+    draw_map = {0: ' ', 1: 'X', -1: 'O'}  # Отображения чисел в текст для рисовалки карты
+    players_dict = {1: 'First', -1: 'Second'}  # Расшифровка игроков
     field_size = get_field_size()
-    dict_field, list_field = generate_field(field_size, lines_names)
+    dict_field, list_field = generate_field(field_size, lines_names)  # Генерируем числовое и текстовое поле
     current_player = 1
     counter = 0
 
