@@ -150,7 +150,7 @@ def check_win(cell: Tuple, game_state: List[List], player: int) -> bool:
         return False
 
 
-if __name__ == 'main':
+if __name__ == '__main__':
     '''
     Launching funtions one by one
     '''
