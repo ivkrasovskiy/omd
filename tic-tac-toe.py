@@ -24,7 +24,7 @@ def generate_field(field_size: int, lines_names: str) -> Tuple[Dict, List]:
     """
     Generating two fields for game. Different types fit better different checks.
     """
-    list_field = []
+    list_field = []  # Список вида [[1,0,1], [-1,0,-1], [0,0,0]], где 1 соотвествует X, -1 - O, 0 - поле не занято
     dict_field = dict()  # Словарь хранит пары вида {a1: (0,0), a2: (0,1), a3: (0, 2), b1: (1,0) ..., c3: (2,2)}
 
     for i in range(field_size):
